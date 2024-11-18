@@ -6,7 +6,7 @@ import SteestImage from "../assets/steest.PNG";
 import SttImage from "../assets/stt.jpg";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { Building2 } from "lucide-react";
+import { Building2, Section } from "lucide-react";
 import styles from "./PublicPage.module.css";
 import logo from "../assets/urslogo.png";
 import login from "../assets/log-in.svg";
@@ -233,10 +233,17 @@ const PublicPage = () => {
           </div>
         </div>
       </div>
-
+                    <div classname={Section}>
+                    <h4>Contact</h4>
+                    <br></br>
+                    Abion,Wendy <br></br>
+                    Arevalo, Patricia  <br></br>
+                    Dañas, Shaina Rose <br></br>
+                    Echave, Ron-Ron <br></br>
+                    </div>
       {/* Footer */}
       <footer className={styles.footer}>
-        <p>&copy; {new Date().getFullYear()} Your School Name. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} University of Rizal Sytem <br></br> Antipolo Campus<br></br> Thesis Group 10 <br></br> All rights reserved.</p>
       </footer>
 
       {/* Third Divider - Optional */}
