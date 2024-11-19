@@ -10,9 +10,8 @@ import { Building2, Section } from "lucide-react";
 import styles from "./PublicPage.module.css";
 import logo from "../assets/urslogo.png";
 import login from "../assets/log-in.svg";
-import coeng from '../assets/coeng.jpg';
+import coeng from "../assets/coeng.jpg";
 import axios from "axios";
-
 
 const PublicPage = () => {
   const [selectedSidebar, setSelectedSidebar] = useState("New Booking");
@@ -25,7 +24,7 @@ const PublicPage = () => {
   const navigate = useNavigate();
 
   const fetchEventsForDate = (selectedDate) => {
-    const formattedDate = selectedDate.toISOString().split('T')[0]; // Formats as yyyy-mm-dd
+    const formattedDate = selectedDate.toISOString().split("T")[0]; // Formats as yyyy-mm-dd
     axios
       .get(`/api/events?date=${formattedDate}`) // Send the formatted date to the backend
       .then((response) => {
@@ -95,7 +94,8 @@ const PublicPage = () => {
               <div className={styles.gradientOverlay}>
                 <h2 className={styles.upcomingEventsText}>Upcoming Events</h2>
                 <p className={styles.eventDetails}>
-                  <span className={styles.eventName}>CoEng Week 2024</span> || <span className={styles.eventDate}>November 11-15, 2024</span>
+                  <span className={styles.eventName}>CoEng Week 2024</span> ||{" "}
+                  <span className={styles.eventDate}>November 11-15, 2024</span>
                 </p>
               </div>
             </div>
@@ -119,11 +119,21 @@ const PublicPage = () => {
               ) : (
                 events.map((event) => (
                   <div key={event.id} className={styles.eventItem}>
-                    <p><strong>Organization:</strong> {event.organization}</p>
-                    <p><strong>Venue:</strong> {event.venue}</p>
-                    <p><strong>Date:</strong> {event.date}</p>
-                    <p><strong>Duration:</strong> {event.duration}</p>
-                    <p><strong>Event Name:</strong> {event.name}</p>
+                    <p>
+                      <strong>Organization:</strong> {event.organization}
+                    </p>
+                    <p>
+                      <strong>Venue:</strong> {event.venue}
+                    </p>
+                    <p>
+                      <strong>Date:</strong> {event.date}
+                    </p>
+                    <p>
+                      <strong>Duration:</strong> {event.duration}
+                    </p>
+                    <p>
+                      <strong>Event Name:</strong> {event.name}
+                    </p>
                   </div>
                 ))
               )}
@@ -131,123 +141,132 @@ const PublicPage = () => {
           </div>
         </div>
 
-        {/* First Divider */}
-        <hr className={styles.divider} />
-
         {/* News and Information Section (on the right) */}
         <div className={styles.layoutContainer}>
-          <div className={styles.verticalSections}>
-            <div className={styles.leftSections}>
-              {/* Councils and Organization List */}
-              <div className={styles.newSidebarContainer}>
-                <h2 className={styles.header}>
-                  <Building2 size={20} color="#063970" /> Councils and Organization List
-                </h2>
-                <div className={styles.sidebarContainer}>
-                  <div className={styles.sidebar}>
-                    {/* Add your buttons here */}
-                    {[
-                "University Supreme Student Government",
-                "COE Council",
-                "COBA Council",
-                "CHI Council",
-                "COENG Council",
-                "BEED Society",
-                "Litera Organization",
-                "Radicals Organization",
-                "Kapulungan Filipino",
-                "Social Studies Organization (UNESCO)",
-                "Association of Stenographer Aiming for Progress (ASAP)",
-                "Association of Junior Administrator (AJA)",
-                "Tourism Society (TM Soc)",
-                "Hospitality Society (HM Soc)",
-                "Bartender’s Society (BAR Soc)	Jessica Faraon	Prof. Mylene T Balagot",
-                "Association of Civil Engineering Students (ACES)",
-                "Association of Concerned Computer Engineering Students (ACCESS) ",
-                "URSAC Extension Organization",
-                "URSAC Fierce Group Facilitator ",
-                "Environment Army Society",
-                "Hiyas ng Rizal Dance Troupe",
-                "Red Cross Youth Council",
-                "Tanghal Tipolo",
-                "CORO URSAC",
-                "Christian Brotherhood International",
-                "Elevate URSAC Chapter",
-                    ].map((item) => (
-                      <button
-                        key={item}
-                        onClick={() => setNewSidebarSelection(item)}
-                        className={{
-                          ...styles.sidebarButton,
-                          backgroundColor: newSidebarSelection === item ? "#0e4296" : "transparent",
-                          color: newSidebarSelection === item ? "#fff" : "#0e4296",
-                        }}
-                      >
-                        {item}
-                      </button>
-                    ))}
-                  </div>
-                  <div className={styles.sidebarContent}>
-                    <h3>{newSidebarSelection}</h3>
-                    {/* Dynamic content goes here */}
-                  </div>
-                </div>
+          <div className={styles.leftSection}>
+            <h2 className={styles.header}>
+              <Building2 size={20} color="#063970" /> Councils and Organization
+              List
+            </h2>
+
+            {/* Councils and Organization List */}
+            <div className={styles.sidebarContainer}>
+              <div className={styles.sidebar}>
+                {/* Add your buttons here */}
+                {[
+                  "University Supreme Student Government",
+                  "COE Council",
+                  "COBA Council",
+                  "CHI Council",
+                  "COENG Council",
+                  "BEED Society",
+                  "Litera Organization",
+                  "Radicals Organization",
+                  "Kapulungan Filipino",
+                  "Social Studies Organization (UNESCO)",
+                  "Association of Stenographer Aiming for Progress (ASAP)",
+                  "Association of Junior Administrator (AJA)",
+                  "Tourism Society (TM Soc)",
+                  "Hospitality Society (HM Soc)",
+                  "Bartender’s Society (BAR Soc)",
+                  "Association of Civil Engineering Students (ACES)",
+                  "Association of Concerned Computer Engineering Students (ACCESS) ",
+                  "URSAC Extension Organization",
+                  "URSAC Fierce Group Facilitator ",
+                  "Environment Army Society",
+                  "Hiyas ng Rizal Dance Troupe",
+                  "Red Cross Youth Council",
+                  "Tanghal Tipolo",
+                  "CORO URSAC",
+                  "Christian Brotherhood International",
+                  "Elevate URSAC Chapter",
+                ].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => setNewSidebarSelection(item)}
+                    className={{
+                      ...styles.sidebarButton,
+                      backgroundColor:
+                        newSidebarSelection === item
+                          ? "#0e4296"
+                          : "transparent",
+                      color: newSidebarSelection === item ? "#fff" : "#0e4296",
+                    }}
+                  >
+                    {item}
+                  </button>
+                ))}
               </div>
 
-              {/* Merged Vision and Mission Section */}
-              <div className={styles.mergedSection}>
-                <div className={styles.leftSection}>
-                  <h3 className={styles.header}>VISION</h3>
-                  <p>
-                The leading University in human resource development, knowledge
-                and technology generation, and environmental stewardship.
-              </p>
-                  <h3 className={styles.header}>MISSION</h3>
-                  <p>
-                The University of Rizal System is committed to nurturing and
-                producing upright and competent graduates and an empowered
-                community through relevant and sustainable higher professional
-                and technical instruction, research, extension, and production
-                services.
-              </p>
-                  <h3 className={styles.header}>CORE VALUES</h3>
-                  <p>R – Responsiveness</p>
-                  <p>I – Integrity</p>
-                  <p>S – Service</p>
-                  <p>E – Excellence</p>
-                  <p>S – Social Responsibility</p>
-                </div>
+              <div className={styles.sidebarContent}>
+                <h3>{newSidebarSelection}</h3>
+                {/* Dynamic content goes here */}
               </div>
             </div>
+          </div>
 
-            {/* News and Information Section */}
-            <div className={styles.rightSection}>
-              <h3 className={styles.header}>News and Information</h3>
-              {/* Add news and info content here */}
-              <div className={styles.newsItem}>
-                <h4>Upcoming Event: CoEng Week</h4>
-                <p>Join us for CoEng Week from November 11-15, 2024!</p>
-              </div>
-              {/* Add more news items as necessary */}
+          {/* News and Information Section */}
+          <div className={styles.rightSection}>
+            <h3 className={styles.header}>News and Information</h3>
+            {/* Add news and info content here */}
+            <div className={styles.newsItem}>
+              <h4>Upcoming Event: CoEng Week</h4>
+              <p>Join us for CoEng Week from November 11-15, 2024!</p>
             </div>
+            {/* Add more news items as necessary */}
+          </div>
+        </div>
+
+        {/* Merged Vision and Mission Section */}
+        <div className={styles.mergedSection}>
+          <div className={styles.leftSection}>
+            <h3 className={styles.vgmoHeader}>VISION</h3>
+            <p className={styles.vgmo}>
+              The leading University in human resource development, knowledge
+              and technology generation, and environmental stewardship.
+            </p>
+            <h3 className={styles.vgmoHeader}>MISSION</h3>
+            <p className={styles.vgmo}>
+              The University of Rizal System is committed to nurture and produce
+              upright and competent graduates and empowered community through
+              relevant and sustainable higher professional and technical
+              instruction, research, extension, and production services.
+            </p>
+            <h3 className={styles.vgmoHeader}>CORE VALUES</h3>
+            <p>R – Responsiveness</p>
+            <p>I – Integrity</p>
+            <p>S – Service</p>
+            <p>E – Excellence</p>
+            <p className={styles.vgmo}>S – Social Responsibility</p>
+            <h3 className={styles.vgmoHeader}>QUALITY POLICY</h3>
+            <p className={styles.vgmo}>
+              The University of Rizal System commits to deliver excellent
+              products and services to ensure total stakeholders’ satisfaction
+              in instruction, research, extension, production and dynamic
+              administrative support and to continuously improve its Quality
+              Management System processes to satisfy all applicable
+              requirements.
+            </p>
           </div>
         </div>
       </div>
-                    <div classname={Section}>
-                    <h4>Contact</h4>
-                    <br></br>
-                    Abion,Wendy <br></br>
-                    Arevalo, Patricia  <br></br>
-                    Dañas, Shaina Rose <br></br>
-                    Echave, Ron-Ron <br></br>
-                    </div>
+
+      <div className={styles.members}>
+        <h4>Members:</h4>
+        Abion,Wendy <br></br>
+        Arevalo, Patricia <br></br>
+        Dañas, Shaina Rose <br></br>
+        Echave, Ron-Ron <br></br>
+      </div>
       {/* Footer */}
       <footer className={styles.footer}>
-        <p>&copy; {new Date().getFullYear()} University of Rizal Sytem <br></br> Antipolo Campus<br></br> Thesis Group 10 <br></br> All rights reserved.</p>
+        <p>
+          &copy; {new Date().getFullYear()} University of Rizal Sytem Antipolo
+          Campus<br></br> All rights reserved.
+        </p>
       </footer>
 
       {/* Third Divider - Optional */}
-      <hr className={styles.divider} />
     </div>
   );
 };

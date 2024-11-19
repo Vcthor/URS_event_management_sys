@@ -7,6 +7,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { Building2, CalendarPlus } from 'lucide-react';
 import axios from 'axios';
+import logo from "../assets/urslogo.png";
 
 
 const Dashboard = () => {
@@ -127,7 +128,15 @@ const Dashboard = () => {
         <div>
             <div style={styles.container}>
                 <nav style={styles.navbar}>
-                    <h1 style={styles.logo}>Dashboard</h1>
+                <div className={styles.logoContainer}>
+                    <img src={logo} alt="Logo" className={styles.logo} />
+                    <div className={styles.titleflex}>
+                        <h1 className={styles.title}>
+                             University of Rizal System - Antipolo Campus
+                        </h1>
+                        <h1 className={styles.subtitle}>Event Booking System</h1>
+                    </div>
+                </div>
                     <button style={styles.logoutButton} onClick={() => navigate('/')}>Logout</button>
                 </nav>
 
