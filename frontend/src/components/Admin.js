@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import styles from './Admin.module.css';
+import logo from "../assets/urslogo.png";
 
 const Admin = () => {
 
